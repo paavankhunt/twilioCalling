@@ -4,8 +4,9 @@ import { Audio } from 'expo-av';
 import { useEffect, useRef, useState } from 'react';
 import { Alert, Button, DeviceEventEmitter, Text, View } from 'react-native';
 
+// Replace with your backend URL that provides Twilio access token
 const BACKEND_URL = 'http://localhost:3000/token';
-const USER_IDENTITY = '+919978825612'; // Or get this from user input/auth
+const USER_IDENTITY = '+919987654321'; // This is the identity for the current user (the caller)
 
 function isCall(obj: Call | CallInvite | null): obj is Call {
   return !!obj && typeof (obj as Call).disconnect === 'function';
@@ -126,7 +127,7 @@ export default function HomeScreen() {
 
     try {
       const newCall = await voiceRef.current.connect(token, {
-        params: { To: '+919574518316' },
+        params: { To: '+919987654320' }, // This is the identity of the receiver
         notificationDisplayName: 'Test Call',
       });
       console.log('📤 Calling...', newCall);
