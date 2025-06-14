@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12375FB8B4AA1D8056E91473 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DF0C3D4E9ADE19FCB13BF /* ExpoModulesProvider.swift */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		932891D8C453EAC570FD4479 /* libPods-twilioCalling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF52FFE387D4171D88F5A6E /* libPods-twilioCalling.a */; };
-		ACB55A79241602EDF60B77DB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F3DC94E32DEF26870D6C6457 /* PrivacyInfo.xcprivacy */; };
+		8C76B0543C66217D5B258948 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = ADACAFE08CF0507CE6FAB035 /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		CC21F686D5EE2D1B264333F9 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E908F332E4BB36676F6A7 /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		FFD38A6C0CF75790DDFBDF61 /* libPods-twilioCalling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E18041DE4817A345DA7FB51D /* libPods-twilioCalling.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* twilioCalling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twilioCalling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = twilioCalling/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = twilioCalling/Info.plist; sourceTree = "<group>"; };
-		4E3E908F332E4BB36676F6A7 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-twilioCalling/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		6A3DDFB587A80A7AE281C336 /* Pods-twilioCalling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twilioCalling.release.xcconfig"; path = "Target Support Files/Pods-twilioCalling/Pods-twilioCalling.release.xcconfig"; sourceTree = "<group>"; };
-		81D77C9F8EA080375AECCB47 /* Pods-twilioCalling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twilioCalling.debug.xcconfig"; path = "Target Support Files/Pods-twilioCalling/Pods-twilioCalling.debug.xcconfig"; sourceTree = "<group>"; };
+		298F981794E7530DB0FAF39A /* Pods-twilioCalling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twilioCalling.release.xcconfig"; path = "Target Support Files/Pods-twilioCalling/Pods-twilioCalling.release.xcconfig"; sourceTree = "<group>"; };
+		46BD46F541F8A1B075205200 /* Pods-twilioCalling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twilioCalling.debug.xcconfig"; path = "Target Support Files/Pods-twilioCalling/Pods-twilioCalling.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = twilioCalling/SplashScreen.storyboard; sourceTree = "<group>"; };
+		ADACAFE08CF0507CE6FAB035 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = twilioCalling/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BCF52FFE387D4171D88F5A6E /* libPods-twilioCalling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-twilioCalling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E18041DE4817A345DA7FB51D /* libPods-twilioCalling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-twilioCalling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = twilioCalling/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* twilioCalling-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "twilioCalling-Bridging-Header.h"; path = "twilioCalling/twilioCalling-Bridging-Header.h"; sourceTree = "<group>"; };
-		F3DC94E32DEF26870D6C6457 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = twilioCalling/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FC7DF0C3D4E9ADE19FCB13BF /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-twilioCalling/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,13 +37,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				932891D8C453EAC570FD4479 /* libPods-twilioCalling.a in Frameworks */,
+				FFD38A6C0CF75790DDFBDF61 /* libPods-twilioCalling.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03D78218772DF3BFEB4AED65 /* twilioCalling */ = {
+			isa = PBXGroup;
+			children = (
+				FC7DF0C3D4E9ADE19FCB13BF /* ExpoModulesProvider.swift */,
+			);
+			name = twilioCalling;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* twilioCalling */ = {
 			isa = PBXGroup;
 			children = (
@@ -53,26 +61,26 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				F3DC94E32DEF26870D6C6457 /* PrivacyInfo.xcprivacy */,
+				ADACAFE08CF0507CE6FAB035 /* PrivacyInfo.xcprivacy */,
 			);
 			name = twilioCalling;
-			sourceTree = "<group>";
-		};
-		2A9394BD92D43DFCCDA1C4FB /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				AC5EDBD02C2E1982AE1D04C7 /* twilioCalling */,
-			);
-			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				BCF52FFE387D4171D88F5A6E /* libPods-twilioCalling.a */,
+				E18041DE4817A345DA7FB51D /* libPods-twilioCalling.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E7A54E7AF5C81D9F7985128 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				03D78218772DF3BFEB4AED65 /* twilioCalling */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -89,8 +97,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				FDDDE8F24A6BA71D140701B7 /* Pods */,
-				2A9394BD92D43DFCCDA1C4FB /* ExpoModulesProviders */,
+				F89AE06FF0719A8E6DD20F2F /* Pods */,
+				5E7A54E7AF5C81D9F7985128 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -105,14 +113,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AC5EDBD02C2E1982AE1D04C7 /* twilioCalling */ = {
-			isa = PBXGroup;
-			children = (
-				4E3E908F332E4BB36676F6A7 /* ExpoModulesProvider.swift */,
-			);
-			name = twilioCalling;
-			sourceTree = "<group>";
-		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,11 +122,11 @@
 			path = twilioCalling/Supporting;
 			sourceTree = "<group>";
 		};
-		FDDDE8F24A6BA71D140701B7 /* Pods */ = {
+		F89AE06FF0719A8E6DD20F2F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				81D77C9F8EA080375AECCB47 /* Pods-twilioCalling.debug.xcconfig */,
-				6A3DDFB587A80A7AE281C336 /* Pods-twilioCalling.release.xcconfig */,
+				46BD46F541F8A1B075205200 /* Pods-twilioCalling.debug.xcconfig */,
+				298F981794E7530DB0FAF39A /* Pods-twilioCalling.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "twilioCalling" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				BE4FDF920A5B89CBB8BDC3B0 /* [Expo] Configure project */,
+				5CC43339B0829190423FCA46 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				C1399AF7573A9389A85ADD48 /* [CP] Embed Pods Frameworks */,
+				C08A8F56ACA4AB4839FA21A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				ACB55A79241602EDF60B77DB /* PrivacyInfo.xcprivacy in Resources */,
+				8C76B0543C66217D5B258948 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +240,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5CC43339B0829190423FCA46 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-twilioCalling/expo-configure-project.sh\"\n";
+		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,26 +299,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-twilioCalling/Pods-twilioCalling-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BE4FDF920A5B89CBB8BDC3B0 /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-twilioCalling/expo-configure-project.sh\"\n";
-		};
-		C1399AF7573A9389A85ADD48 /* [CP] Embed Pods Frameworks */ = {
+		C08A8F56ACA4AB4839FA21A9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,7 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				CC21F686D5EE2D1B264333F9 /* ExpoModulesProvider.swift in Sources */,
+				12375FB8B4AA1D8056E91473 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +336,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81D77C9F8EA080375AECCB47 /* Pods-twilioCalling.debug.xcconfig */;
+			baseConfigurationReference = 46BD46F541F8A1B075205200 /* Pods-twilioCalling.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -361,7 +361,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anonymous.twilioCalling;
-				PRODUCT_NAME = "twilioCalling";
+				PRODUCT_NAME = twilioCalling;
 				SWIFT_OBJC_BRIDGING_HEADER = "twilioCalling/twilioCalling-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -372,7 +372,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A3DDFB587A80A7AE281C336 /* Pods-twilioCalling.release.xcconfig */;
+			baseConfigurationReference = 298F981794E7530DB0FAF39A /* Pods-twilioCalling.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -392,7 +392,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anonymous.twilioCalling;
-				PRODUCT_NAME = "twilioCalling";
+				PRODUCT_NAME = twilioCalling;
 				SWIFT_OBJC_BRIDGING_HEADER = "twilioCalling/twilioCalling-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
