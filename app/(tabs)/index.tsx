@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Alert, Button, DeviceEventEmitter, Text, View } from 'react-native';
 
 const BACKEND_URL = 'http://localhost:3000/token';
-const USER_IDENTITY = 'demo-user'; // Or get this from user input/auth
+const USER_IDENTITY = '+919978825612'; // Or get this from user input/auth
 
 function isCall(obj: Call | CallInvite | null): obj is Call {
   return !!obj && typeof (obj as Call).disconnect === 'function';
@@ -113,21 +113,23 @@ export default function HomeScreen() {
   }, []); // Remove token dependency to avoid re-initialization
 
   const makeCall = async () => {
+    console.log('Make Call pressed');
     if (!token || !voiceRef.current || !isInitialized) {
-      console.warn('Voice SDK not ready');
+      console.warn('Voice SDK not ready', {
+        token,
+        isInitialized,
+        voiceRef: !!voiceRef.current,
+      });
       Alert.alert('Not Ready', 'Voice SDK is not initialized yet');
       return;
     }
 
     try {
       const newCall = await voiceRef.current.connect(token, {
-        // Call another client by identity (e.g., 'demo-user2')
-        params: {
-          To: 'demo-user2', // Replace with the identity you want to call
-        },
+        params: { To: '+919574518316' },
         notificationDisplayName: 'Test Call',
       });
-      console.log('📤 Calling...');
+      console.log('📤 Calling...', newCall);
       setCall(newCall);
     } catch (err) {
       console.error('❌ Error making call:', err);
