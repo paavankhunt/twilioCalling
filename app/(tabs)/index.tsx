@@ -1,75 +1,186 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Call, CallInvite, Voice } from '@twilio/voice-react-native-sdk';
+import axios from 'axios';
+import { Audio } from 'expo-av';
+import { useEffect, useRef, useState } from 'react';
+import { Alert, Button, DeviceEventEmitter, Text, View } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const BACKEND_URL = 'http://localhost:3000/token';
+const USER_IDENTITY = 'demo-user'; // Or get this from user input/auth
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+function isCall(obj: Call | CallInvite | null): obj is Call {
+  return !!obj && typeof (obj as Call).disconnect === 'function';
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+export default function HomeScreen() {
+  const [token, setToken] = useState<string | null>(null);
+  const [call, setCall] = useState<Call | CallInvite | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Use useRef to persist Voice instance across re-renders
+  const voiceRef = useRef<Voice | null>(null);
+
+  useEffect(() => {
+    const init = async () => {
+      try {
+        // Request microphone permissions
+        const { status } = await Audio.requestPermissionsAsync();
+        if (status !== 'granted') {
+          Alert.alert(
+            'Permission Required',
+            'Microphone permission is required'
+          );
+          return;
+        }
+
+        // Initialize Voice instance once
+        if (!voiceRef.current) {
+          voiceRef.current = new Voice();
+        }
+
+        // Get access token with identity
+        const res = await axios.get(`${BACKEND_URL}?identity=${USER_IDENTITY}`);
+        const accessToken = res.data.token;
+        setToken(accessToken);
+
+        // Register with Twilio
+        await voiceRef.current.register(accessToken);
+        setIsInitialized(true);
+
+        // Set up event listeners
+        const handleIncomingCall = (callInvite: CallInvite) => {
+          console.log('📞 Incoming call:', callInvite);
+          setCall(callInvite);
+
+          // Auto-accept incoming calls (you might want to show UI for this)
+          callInvite
+            .accept()
+            .then((activeCall) => {
+              console.log('✅ Call accepted');
+              setCall(activeCall);
+            })
+            .catch((err) => {
+              console.error('❌ Error accepting call:', err);
+              Alert.alert('Error', 'Failed to accept call');
+            });
+        };
+
+        const handleCallDisconnected = () => {
+          console.log('📴 Call disconnected');
+          setCall(null);
+        };
+
+        const handleCallRinging = () => {
+          console.log('🔔 Call is ringing...');
+        };
+
+        // Add listeners and store subscriptions
+        const incomingCallSubscription = DeviceEventEmitter.addListener(
+          'deviceDidReceiveIncoming',
+          handleIncomingCall
+        );
+        const disconnectedSubscription = DeviceEventEmitter.addListener(
+          'callDisconnected',
+          handleCallDisconnected
+        );
+        const ringingSubscription = DeviceEventEmitter.addListener(
+          'callStateRinging',
+          handleCallRinging
+        );
+
+        // Store listener cleanup functions
+        return () => {
+          incomingCallSubscription.remove();
+          disconnectedSubscription.remove();
+          ringingSubscription.remove();
+        };
+      } catch (err) {
+        console.error('🚨 Voice SDK init error:', err);
+        Alert.alert('Initialization Error', 'Failed to initialize Voice SDK');
+      }
+    };
+
+    const cleanup = init();
+
+    // Cleanup function
+    return () => {
+      cleanup?.then((cleanupFn) => cleanupFn?.());
+
+      // Unregister when component unmounts
+      if (token && voiceRef.current) {
+        voiceRef.current.unregister(token).catch(console.error);
+      }
+    };
+  }, []); // Remove token dependency to avoid re-initialization
+
+  const makeCall = async () => {
+    if (!token || !voiceRef.current || !isInitialized) {
+      console.warn('Voice SDK not ready');
+      Alert.alert('Not Ready', 'Voice SDK is not initialized yet');
+      return;
+    }
+
+    try {
+      const newCall = await voiceRef.current.connect(token, {
+        // Call another client by identity (e.g., 'demo-user2')
+        params: {
+          To: 'demo-user2', // Replace with the identity you want to call
+        },
+        notificationDisplayName: 'Test Call',
+      });
+      console.log('📤 Calling...');
+      setCall(newCall);
+    } catch (err) {
+      console.error('❌ Error making call:', err);
+      Alert.alert('Call Failed', 'Unable to make call');
+    }
+  };
+
+  const endCall = () => {
+    try {
+      if (isCall(call)) {
+        call.disconnect();
+      } else if (call) {
+        // Handle CallInvite rejection
+        (call as CallInvite).reject();
+      }
+      setCall(null);
+    } catch (err) {
+      console.error('❌ Error ending call:', err);
+      setCall(null); // Reset state anyway
+    }
+  };
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+      }}
+    >
+      <Text style={{ fontSize: 22, marginBottom: 30 }}>
+        Twilio Voice Call Demo
+      </Text>
+
+      <Text style={{ marginBottom: 20, textAlign: 'center' }}>
+        Status: {isInitialized ? 'Ready' : 'Initializing...'}
+      </Text>
+
+      {!call ? (
+        <Button
+          title="Make Call"
+          onPress={makeCall}
+          disabled={!isInitialized}
+        />
+      ) : (
+        <View>
+          <Text style={{ marginBottom: 10, textAlign: 'center' }}>
+            {isCall(call) ? 'Call Active' : 'Incoming Call'}
+          </Text>
+          <Button title="End Call" onPress={endCall} color="red" />
+        </View>
+      )}
+    </View>
+  );
+}
