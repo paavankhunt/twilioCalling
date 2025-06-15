@@ -101,6 +101,7 @@ export default function HomeScreen() {
   };
 
   const makeCall = async () => {
+    console.log('Making call with token:', token);
     if (!token || !voiceRef.current || !isInitialized) {
       Alert.alert('Not Ready', 'Voice SDK is not initialized yet');
       return;
@@ -113,12 +114,15 @@ export default function HomeScreen() {
       return;
     }
     try {
+      console.log('🚀 ~ makeCall ~ receiver:', receiver);
       const newCall = await voiceRef.current.connect(token, {
         params: { To: receiver },
         notificationDisplayName: 'Test Call',
       });
+      console.log('🚀 ~ makeCall ~ newCall:', newCall);
       setCall(newCall);
     } catch (err) {
+      console.log('🚀 ~ makeCall ~ err:', err);
       Alert.alert('Call Failed', 'Unable to make call');
     }
   };
@@ -152,33 +156,32 @@ export default function HomeScreen() {
       <Text style={{ marginBottom: 20, textAlign: 'center' }}>
         Status: {isInitialized ? 'Ready' : 'Initializing...'}
       </Text>
+      <Text style={{ marginBottom: 20, textAlign: 'center' }}>
+        Caller: {caller}
+      </Text>
 
-      {!caller ? (
+      <TextInput
+        style={{
+          borderWidth: 1,
+          borderColor: '#ccc',
+          borderRadius: 5,
+          padding: 10,
+          width: 250,
+          marginBottom: 10,
+        }}
+        placeholder="Enter your (caller) identity"
+        value={callerInput}
+        onChangeText={setCallerInput}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      <Button
+        title="Set Caller"
+        onPress={handleSetCaller}
+        disabled={!callerInput.trim()}
+      />
+      {!call ? (
         <>
-          <TextInput
-            style={{
-              borderWidth: 1,
-              borderColor: '#ccc',
-              borderRadius: 5,
-              padding: 10,
-              width: 250,
-              marginBottom: 10,
-            }}
-            placeholder="Enter your (caller) identity"
-            value={callerInput}
-            onChangeText={setCallerInput}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <Button
-            title="Set Caller"
-            onPress={handleSetCaller}
-            disabled={!callerInput.trim()}
-          />
-        </>
-      ) : !call ? (
-        <>
-          <Text style={{ marginBottom: 10 }}>Caller: {caller}</Text>
           <TextInput
             style={{
               borderWidth: 1,
